@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Мой HTML-документ</title>
+  <style>
+    #element1 {
+      padding: 10px;
+      background-color: white;
+      color: black;
+      /* position: absolute; */
+      bottom: 0;
+      right: 0;
+    }
+    .red-background {
+      background-color: red;
+    }
+    .blue-text {
+      color: blue;
+    }
+    .move-to-bottom-right {
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Получение массива форм на странице
+      var forms = document.getElementsByTagName('form');
+
+      // Вывод информации обо всех формах через 5 секунд
+      setTimeout(function() {
+        for (var i = 0; i < forms.length; i++) {
+          console.log('Форма ' + (i + 1) + ':');
+          console.log(forms[i]);
+        }
+      }, 5000);
+
+      // Обмен элементов 2 и 3 по щелчку на элементе 2
+      var element2 = document.getElementById('element2');
+      var element3 = document.getElementById('element3');
+
+      element2.addEventListener('click', function() {
+        var parent = element2.parentNode;
+        parent.insertBefore(element3, element2);
+      });
+
+      // Получение информации об операционной системе клиента и вывод в диалоговом окне через 6 секунд
+      setTimeout(function() {
+        var os = navigator.platform;
+        alert('Операционная система: ' + os);
+      }, 6000);
+    });
+
+    function changeStyle() {
+      var element1 = document.getElementById('element1');
+        element1.style.cssText="position:absolute; right:0; bottom:0; color: blue; background-color:red;"
+    }
+  </script>
+</head>
+<body>
+  <div id="element1">
+    <h1>Капицын Антон Антонович</h1>
+  </div>
+
+  <button onclick="changeStyle()">Сменить стиль</button>
+
+  <div id="element2"><img src="1.png" alt="Изображение"></div>
+
+  <div id="element3"><a href="https://www.youtube.com">Ссылка на мой любимый сайт</a></div>
+</body>
+</html>
